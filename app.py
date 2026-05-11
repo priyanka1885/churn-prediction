@@ -18,21 +18,38 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    try:
+        data = request.get_json()
 
-    data = request.json
+        # ✅ safe validation
+        if not data or "features" not in data:
+            return jsonify({
+                "error": "Missing or invalid 'features' key"
+            }), 400
 
-    features = np.array(data["features"]).reshape(1, -1)
+        features = np.array(data["features"])
 
-    scaled = scaler.transform(features)
+        if len(features) == 0:
+            return jsonify({
+                "error": "Empty features"
+            }), 400
 
-    prediction = model.predict(scaled)[0]
+        features = features.reshape(1, -1)
 
-    probability = model.predict_proba(scaled)[0][1]
+        scaled = scaler.transform(features)
 
-    return jsonify({
-        "prediction": int(prediction),
-        "probability": float(probability)
-    })
+        prediction = model.predict(scaled)[0]
+        probability = model.predict_proba(scaled)[0][1]
+
+        return jsonify({
+            "prediction": int(prediction),
+            "probability": float(probability)
+        })
+
+    except Exception as e:
+        return jsonify({
+            "error": str(e)
+        }), 500
 import joblib
 feature_names = joblib.load("features.pkl")
 
