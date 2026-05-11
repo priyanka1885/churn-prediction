@@ -1,0 +1,16 @@
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+
+# Dataset folders (DO NOT UPLOAD)
+telco customer churn.csv/
+processed_data.csv/
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
