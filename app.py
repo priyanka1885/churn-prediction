@@ -36,5 +36,6 @@ def predict():
 import joblib
 feature_names = joblib.load("features.pkl")
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
