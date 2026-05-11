@@ -5,8 +5,8 @@
 __pycache__/
 
 # Dataset folders (DO NOT UPLOAD)
-telco customer churn.csv/
-processed_data.csv/
+telco customer churn.csv
+processed_data.csv
 
 # VS Code settings
 .vscode/
