@@ -14,3 +14,6 @@ processed_data.csv
 # OS files
 .DS_Store
 Thumbs.db
+
+chart'.txt
+folder_structure.txt
