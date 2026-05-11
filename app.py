@@ -12,29 +12,31 @@ scaler = joblib.load("scaler.pkl")
 
 
 
-@app.route("/")
-def home():
-    return "API Running"
-
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
         data = request.get_json()
 
-        # ✅ safe validation
-        if not data or "features" not in data:
-            return jsonify({
-                "error": "Missing or invalid 'features' key"
-            }), 400
+        raw = data["features"]
 
-        features = np.array(data["features"])
-
-        if len(features) == 0:
-            return jsonify({
-                "error": "Empty features"
-            }), 400
-
-        features = features.reshape(1, -1)
+        # Map EXACT order of training features
+        features = np.array([[
+            raw["TotalCharges"],
+            raw["AvgChargePerMonth"],
+            raw["tenure"],
+            raw["MonthlyCharges"],
+            raw["Contract_Month-to-month"],
+            raw["OnlineSecurity_No"],
+            raw["PaymentMethod_Electronic check"],
+            raw["TechSupport_No"],
+            raw["gender"],
+            raw["PaperlessBilling"],
+            raw["InternetService_Fiber optic"],
+            raw["Partner"],
+            raw["Contract_Two year"],
+            raw["OnlineBackup_No"],
+            raw["Dependents"]
+        ]])
 
         scaled = scaler.transform(features)
 
@@ -47,9 +49,7 @@ def predict():
         })
 
     except Exception as e:
-        return jsonify({
-            "error": str(e)
-        }), 500
+        return jsonify({"error": str(e)}), 500
 import joblib
 feature_names = joblib.load("features.pkl")
 
