@@ -86,14 +86,7 @@ Customer-Churn-Prediction-System/
 
 ---
 
-## Deployment
 
-The project is deployed and accessible online.
-
-Live URL:  
-https://your-app-link.com  
-
----
 
 ## Future Improvements
 
