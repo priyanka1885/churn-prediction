@@ -1,11 +1,11 @@
 # Customer Churn Prediction System (End-to-End Machine Learning Project)
 
-Live Demo  
-https://your-app-link.com  
+
 
 ---
-
+![image](https://github.com/user-attachments/assets/7605e82c-cc38-4a2d-961d-6fca3f7defb2" /)
 ## Overview
+<img width="1490" height="780" alt="WhatsApp Image 2026-05-12 at 6 29 55 PM" src="https://github.com/user-attachments/assets/7605e82c-cc38-4a2d-961d-6fca3f7defb2" />
 
 The Customer Churn Prediction System is an end-to-end machine learning project designed to predict whether a customer is likely to discontinue a service.
 
